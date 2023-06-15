@@ -16,14 +16,12 @@ export const PassGenerated = () => {
 
     return (
         <>
-            <div className='d-flex align-items-center w-100' style={{marginBottom: 10, marginTop: 6}}>
-                <input className="card mt-0 mb-0 w-100 input-pass" style={{height: 40, fontWeight: 'bold', color: '#888098', fontSize:15}} ref={textRef} type="text" value={randomString} readOnly />
+            <div className='d-flex align-items-center w-100 pass-container'>
+                <input className="card mt-0 mb-0 w-100 input-pass" ref={textRef} type="text" value={randomString} readOnly />
                 <button onClick={copyToClipboard} className='btn' style={{marginRight:10, marginLeft:10, background:'rgb(0 117 255)', color: 'white'}}><FaRegCopy /></button>
 
                 <button onClick={() => generateString(value)} className='btn' style={{background:'rgb(0 117 255)', color: 'white'}}><GiClockwiseRotation /></button>
             </div>
-            
-            <p className={value < 8 && generateNewString ? 'visible' : 'not-visible'}>Demasiado Corta</p>
 
             <input
                 type="range"
@@ -33,7 +31,7 @@ export const PassGenerated = () => {
                 onChange={handleRangeChange}
                 className="w-100"
             />
-            <p>Valor seleccionado: {value}</p>
+            <p style={{marginBottom: 30}}>Valor seleccionado: {value}</p>
 
             <ul style={{listStyle: 'none', padding:0, fontWeight: 'bold', marginTop: '1rem'}}>
                 <li className='d-flex' style={{width:'100%', justifyContent:'space-between', marginBottom: 15}}>

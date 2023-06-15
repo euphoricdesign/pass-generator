@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { PassGenerated } from "./components/PassGenerated";
 
 import { useGeneratePass } from "./hooks/useGeneratePass";
@@ -6,9 +7,23 @@ import './PasswordGenerator.css'
 
 export const PasswordGenerator = () => {
 
+    const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth >= 768);
+
+    useEffect(() => {
+        const handleResize = () => {
+          setIsLargeScreen(window.innerWidth >= 768);
+        };
+    
+        window.addEventListener('resize', handleResize);
+    
+        return () => {
+          window.removeEventListener('resize', handleResize);
+        };
+    }, []);
+
     return (
-        <div className='card' style={{width:650, height: 450, margin:'10% auto', background:'#344055', color: 'white'}}>
-            <h1 className='card-header' style={{fontSize:38, textAlign: 'center'}}>Password Generator</h1>
+        <div className={`containerWithoutCardClass ${isLargeScreen ? 'card' : ''}`}>
+            <h1 className='card-header pass-header' style={{fontSize:38, textAlign: 'center'}}>Password Generator</h1>
 
             <div className='card-body' style={{padding: '22px 30px 30px 30px'}}>
                 <PassGenerated />
