@@ -23,7 +23,7 @@ export const PasswordGenerator = () => {
 
     return (
         <div className={`containerWithoutCardClass ${isLargeScreen ? 'card' : ''}`}>
-            <h1 className='card-header pass-header' style={{fontSize:38, textAlign: 'center'}}>Password Generator</h1>
+            <h1 className='card-header pass-header'>Password Generator</h1>
 
             <div className='card-body' style={{padding: '22px 30px 30px 30px'}}>
                 <PassGenerated />
